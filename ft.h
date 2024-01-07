@@ -32,6 +32,7 @@ int		ft_chk_cu(int col, int size, int **board);
 int		ft_chk_cl(int col, int size, int **board);
 int		ft_solve_pos(int col, int row, int size, int **board);
 void	ft_write_error(void);
+void	ft_print_line(int size);
 void	ft_print_sol(int **board, int size);
 int		ft_getsize(char *input);
 
