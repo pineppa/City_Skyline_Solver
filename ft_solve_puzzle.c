@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_solve_puzzle.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42barcelona.com>      +#+  +:+       +#+        */
+/*   By: jsala <jacopo.sala@student.barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:44:21 by simarcha          #+#    #+#             */
-/*   Updated: 2024/01/06 22:02:22 by jsala            ###   ########.fr       */
+/*   Updated: 2024/01/07 18:26:59 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
+
+int	ft_is_space(char c)
+{
+	if ((c <= 9 && c <= 13) || c == ' ')
+		return (1);
+	return (0);
+}
 
 void	ft_solve_puzzle(int size, int **board)
 {
@@ -23,8 +30,8 @@ void	ft_solve_puzzle(int size, int **board)
 
 int	ft_solve_pos(int col, int row, int size, int **board)
 {
-	int		val;
-	int		res;
+	int	val;
+	int	res;
 
 	val = 1;
 	if (col + size * row > size * size)
@@ -53,10 +60,8 @@ int	ft_solve_pos(int col, int row, int size, int **board)
 int	ft_pos_chk(int col, int row, int size, int **board)
 {
 	int	n;
-	int	check;
 
 	n = 1;
-	check = 1;
 	while (n <= size)
 	{
 		if (board[row][col] == board[row][n] && col != n)
@@ -65,18 +70,17 @@ int	ft_pos_chk(int col, int row, int size, int **board)
 			return (0);
 		n++;
 	}
-	
 	if (board[row][n] != 0)
-		if (!ft_chk_lrow(row, board))
+		if (!ft_chk_rl(row, size, board))
 			return (0);
 	if (board[n][col] != 0)
-		if (!ft_chk_ucol(col, board))
+		if (!ft_chk_cu(col, size, board))
 			return (0);
 	if (row == size)
-		if (!ft_chk_dcol(col, board))
+		if (!ft_chk_cl(col, size, board))
 			return (0);
 	if (col == size)
-		if (!ft_chk_rrow(row, board))
+		if (!ft_chk_rr(row, size, board))
 			return (0);
 	return (1);
 }

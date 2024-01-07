@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_validity.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42barcelona.com>      +#+  +:+       +#+        */
+/*   By: jsala <jacopo.sala@student.barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 12:11:22 by simarcha          #+#    #+#             */
-/*   Updated: 2024/01/06 21:45:27 by jsala            ###   ########.fr       */
+/*   Updated: 2024/01/07 18:29:20 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int	ft_check_input(char *input)
 {
-//	int	i;
-	int size;
+	int	size;
 
-//	i = 0;
 	size = ft_getsize(input);
 /*	if (size || !ft_th_one(input))
 		return (0);
 	if (!ft_check_sum(input))
-		return (0);
-*/	return (size);
+		return (0);*/
+	return (size);
 }
 
 int	ft_getsize(char *input)
@@ -35,13 +33,13 @@ int	ft_getsize(char *input)
 	i = -1;
 	while (input[++i])
 	{
-		if ((input[i] < '0' || input[i] > '9') && is_space(input[i]))
+		if ((input[i] < '0' || input[i] > '9') && ft_is_space(input[i]))
 		{
 			ft_write_error();
 			return (0);
 		}
-		if (input[i] == ' ' && (input[i + 1] == '/0' 
-			|| is_space(input[i + 1])))
+		if (input[i] == ' ' && (input[i + 1] == '\0'
+				|| ft_is_space(input[i + 1])))
 			count++;
 	}
 	if (count % 4 == 0)

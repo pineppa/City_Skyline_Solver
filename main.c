@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42barcelona.com>      +#+  +:+       +#+        */
+/*   By: jsala <jacopo.sala@student.barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:10:00 by simarcha          #+#    #+#             */
-/*   Updated: 2024/01/06 21:27:58 by jsala            ###   ########.fr       */
+/*   Updated: 2024/01/07 18:19:00 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	**ft_init_board(int size)
 {
 	int		col;
 	int		row;
-	char	**board;
+	int		**board;
 
 	board = malloc(sizeof(char *) * size + 2);
 	if (!board)
@@ -44,7 +44,7 @@ int	**ft_init_board(int size)
 	return (board);
 }
 
-void	**ft_init_input(char *str, int size, int **board)
+int	**ft_init_input(char *str, int size, int **board)
 {
 	int	n;
 
