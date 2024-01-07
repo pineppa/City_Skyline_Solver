@@ -6,7 +6,7 @@
 /*   By: jsala <jacopo.sala@student.barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:10:00 by simarcha          #+#    #+#             */
-/*   Updated: 2024/01/07 18:19:00 by jsala            ###   ########.fr       */
+/*   Updated: 2024/01/07 22:38:22 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	free_matrix(int **matrix, int size)
 {
 	int	i;
 
-	i = -1;
-	while (++i < size + 2)
+	i = 0;
+	while (i < size + 2)
+	{
 		free(matrix[i]);
+		i++;
+	}
 	free(matrix);
 }
 
@@ -28,14 +31,14 @@ int	**ft_init_board(int size)
 	int		row;
 	int		**board;
 
-	board = malloc(sizeof(char *) * size + 2);
+	board = malloc(sizeof(int *) * (size + 2));
 	if (!board)
 		return (NULL);
 	col = -1;
 	while (++col < size + 2)
 	{
 		row = -1;
-		board[col] = malloc(sizeof(int) * size + 2);
+		board[col] = malloc(sizeof(int) * (size + 2));
 		if (!board[col])
 			return (NULL);
 		while (++row < size + 2)
@@ -52,13 +55,13 @@ int	**ft_init_input(char *str, int size, int **board)
 	while (*str && ++n < 4 * size)
 	{
 		if (n < size)
-			board[0][n % size] = *str - '0';
+			board[0][n % size + 1] = *str - '0';
 		else if (n < 2 * size)
-			board[size + 1][n % size] = *str - '0';
+			board[size + 1][n % size + 1] = *str - '0';
 		else if (n < 3 * size)
-			board[n % size][0] = *str - '0';
+			board[n % size + 1][0] = *str - '0';
 		else if (n < 4 * size)
-			board[n % size][size + 1] = *str - '0';
+			board[n % size + 1][size + 1] = *str - '0';
 		str += 2;
 	}
 	return (board);
@@ -80,7 +83,7 @@ int	main(int argc, char **argv)
 	board = ft_init_board(size);
 	if (!board)
 		return (1);
-	ft_init_input(argv[1], size, board);
+	board = ft_init_input(argv[1], size, board);
 	ft_solve_puzzle(size, board);
 	free_matrix(board, size);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_sol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42barcelona.com>      +#+  +:+       +#+        */
+/*   By: jsala <jacopo.sala@student.barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 10:07:33 by jsala             #+#    #+#             */
-/*   Updated: 2024/01/06 22:00:14 by jsala            ###   ########.fr       */
+/*   Updated: 2024/01/07 20:37:51 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	ft_print_sol(int **board, int size)
 	int		j;
 	char	val;
 
-	i = 0;
-	while (++i <= size)
+	i = -1;
+	while (++i <= size + 1)
 	{
-		j = 0;
-		while (++j <= size)
+		j = -1;
+		while (++j <= size + 1)
 		{
 			val = board[i][j] + '0';
 			ft_putchar(val);
-			if (j < size)
+			if (j < size + 1)
 				ft_putchar(' ');
 		}
 		ft_putchar('\n');

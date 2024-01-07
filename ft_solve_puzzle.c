@@ -6,7 +6,7 @@
 /*   By: jsala <jacopo.sala@student.barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:44:21 by simarcha          #+#    #+#             */
-/*   Updated: 2024/01/07 18:26:59 by jsala            ###   ########.fr       */
+/*   Updated: 2024/01/07 22:35:17 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ int	ft_is_space(char c)
 	return (0);
 }
 
-void	ft_solve_puzzle(int size, int **board)
+int ft_solve_puzzle(int size, int **board)
 {
 	int	res;
 
 	res = ft_solve_pos(1, 1, size, board);
 	if (!res)
 		ft_write_error();
+	return (res);
 }
 
 int	ft_solve_pos(int col, int row, int size, int **board)
@@ -34,7 +35,7 @@ int	ft_solve_pos(int col, int row, int size, int **board)
 	int	res;
 
 	val = 1;
-	if (col + size * row > size * size)
+	if (col + size * row > size * (size + 1))
 	{
 		ft_print_sol(board, size);
 		return (1);
@@ -70,17 +71,13 @@ int	ft_pos_chk(int col, int row, int size, int **board)
 			return (0);
 		n++;
 	}
-	if (board[row][n] != 0)
-		if (!ft_chk_rl(row, size, board))
-			return (0);
-	if (board[n][col] != 0)
-		if (!ft_chk_cu(col, size, board))
-			return (0);
-	if (row == size)
-		if (!ft_chk_cl(col, size, board))
-			return (0);
-	if (col == size)
-		if (!ft_chk_rr(row, size, board))
-			return (0);
+	if (!ft_chk_rl(row, size, board))
+		return (0);
+	if (!ft_chk_cu(col, size, board))
+		return (0);
+	if (row == size && !ft_chk_cl(col, size, board))
+		return (0);
+	if (col == size && !ft_chk_rr(row, size, board))
+		return (0);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pos_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsala <jsala@student.42barcelona.com>      +#+  +:+       +#+        */
+/*   By: jsala <jacopo.sala@student.barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:34:30 by jsala             #+#    #+#             */
-/*   Updated: 2024/01/06 22:42:01 by jsala            ###   ########.fr       */
+/*   Updated: 2024/01/07 22:12:12 by jsala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_chk_cu(int col, int size, int **board)
 	}
 	if (t_col_vis > board[0][col])
 		return (0);
+	else if (n == size + 1 && t_col_vis != board[0][col])
+		return (0);
 	return (1);
 }
 
@@ -51,7 +53,7 @@ int	ft_chk_cl(int col, int size, int **board)
 			t_col_vis++;
 		}
 	}
-	if (t_col_vis > board[size + 1][col])
+	if (t_col_vis != board[size + 1][col])
 		return (0);
 	return (1);
 }
@@ -62,18 +64,21 @@ int	ft_chk_rl(int row, int size, int **board)
 	int	t_row_max_h;
 	int	t_row_vis;
 
-	n = 0;
+	n = 1;
 	t_row_max_h = 0;
 	t_row_vis = 0;
-	while (++n <= size && board[row][n] != 0)
+	while (n <= size && board[row][n] != 0)
 	{
 		if (t_row_max_h < board[row][n])
 		{
 			t_row_max_h = board[row][n];
 			t_row_vis++;
 		}
+		n++;
 	}
 	if (t_row_vis > board[row][0])
+		return (0);
+	else if (n == size + 1 && t_row_vis != board[row][0])
 		return (0);
 	return (1);
 }
@@ -95,7 +100,7 @@ int	ft_chk_rr(int row, int size, int **board)
 			t_row_vis++;
 		}
 	}
-	if (t_row_vis > board[row][size + 1])
+	if (t_row_vis != board[row][size + 1])
 		return (0);
 	return (1);
 }

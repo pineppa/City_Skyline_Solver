@@ -22,7 +22,7 @@ int		ft_is_space(char c);
 int		ft_check_sum(int size, int **board);
 void	free_matrix(int **matrix, int size);
 void	ft_putchar(char c);
-void	ft_solve_puzzle(int size, int **board);
+int     ft_solve_puzzle(int size, int **board);
 int		**ft_init_input(char *str, int size, int **board);
 int		**ft_init_board(int size);
 int		ft_pos_chk(int col, int row, int size, int **board);
