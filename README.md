@@ -1,11 +1,11 @@
 # Skyscrapers Puzzle Solver
-This project was developed as the Rush_01 project for the Piscine at 42 Barcelona. The exercise is a solver for the skyscrapeers puzzle. The specific solver created follows a specific input, that is checked against wrong inputs. More information in the code explaination. 
+This project was developed as the Rush_01 project for the Piscine at 42 Barcelona. The exercise is a solver for the skyscrapers puzzle. The specific solver created follows a specific input, that is checked against wrong inputs. More information in the code explaination. 
 
 ## :video_game: The game
 
 The game is a common puzzle where the goal is to fill a N x N square with te height of each building knowing:
 * Every building in the same row or column has a different height; Otherwise, there is no building as high as any other on the same line or column; 
-* For each position on the side of the squares, it is given the amount of skyscrapeers visible from that specific location.
+* For each position on the side of the squares, it is given the amount of skyscrapers visible from that specific location.
 
 A 3D visualization of the game:
 
@@ -17,7 +17,7 @@ A 3D visualization of the game:
   * The visibility is also given for the diagonal;
 
 * More complicated variants:
-  * Part of the information about the amount of visible skyscrapeers is omitted.
+  * Part of the information about the amount of visible skyscrapers is omitted.
   * The size of the square can be increased. Up to 6x6 is commonly found in enigmistics journals.
 
 ## The solving algorithm
